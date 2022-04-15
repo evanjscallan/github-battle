@@ -45,7 +45,22 @@ li {
  	font-size: 18px;
  	font-weight: bold;
  	text-decoration: none;
- 	color: inherit;
+   color: black;
+ 	
+ }
+
+ .unselected{
+   color: inherit;
+   font-size: 18px;
+   font-weight: bold;
+   text-decoration: none;
+ }
+
+ .addRed{
+
+   font-size: 18px;
+   font-weight: bold;
+   text-decoration: none;
  }
 
 
@@ -273,4 +288,13 @@ li {
 .light-btn:disabled{
    background: #292929;
    color: #4a4a4a;
+}
+
+.space-between{
+   justify-content: space-between;
+}
+
+
+.nav li{
+   margin-right: 10px;
 }

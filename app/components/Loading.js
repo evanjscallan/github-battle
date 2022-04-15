@@ -14,17 +14,10 @@ const styles = {
 
 //goal is to make your component reuseable
 export default class Loading extends React.Component {
-	constructor(props){
-		super(props)
-
-		this.state = {
-			content: props.text
-		}
-	}
+	state = { content: this.props.text }
 	//set instance properties so we can access them elsewhere in component (unmount)
 	componentDidMount () {
 		const { speed, text } = this.props
-
 		this.interval = window.setInterval(() =>  {
 			this.state.content === text + '...'
 				? this.setState({ content: text })
@@ -45,12 +38,4 @@ export default class Loading extends React.Component {
 }
 
 
-Loading.propTypes = {
-	text: PropTypes.string.isRequired,
-	speed: PropTypes.number.isRequired
-}
 
-Loading.defaultProps = {
-	text: 'Loading',
-	speed: 300
-}
