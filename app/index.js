@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import { ThemeProvider } from './contexts/theme'
-import Nav from './components/Nav'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Loading from './components/Loading'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import { ThemeProvider } from "./contexts/theme";
+import Nav from "./components/Nav";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Loading from "./components/Loading";
 
-const Popular = React.lazy(() => import('./components/Popular'))
-const Battle = React.lazy(() => import('./components/Battle'))
-const Results = React.lazy(() => import('./components/Results'))
+const Popular = React.lazy(() => import("./components/Popular"));
+const Battle = React.lazy(() => import("./components/Battle"));
+const Results = React.lazy(() => import("./components/Results"));
 //component aspects:
 //state
 //lifecycle
@@ -17,42 +17,44 @@ const Results = React.lazy(() => import('./components/Results'))
 //storing toggle theme in state for context
 
 const FourZeroFour = () => {
-	return <h1>404 - Not Found.</h1>
-}
+	return <h1>404 - Not Found.</h1>;
+};
 
 export default class App extends React.Component {
 	state = {
-		theme: 'light',
+		theme: "light",
 		toggleTheme: () => {
 			this.setState(({ theme }) => ({
-				theme: theme === 'light' ? 'dark' : 'light'
-			}))
-			}
-		}
-		//wrapped in additional div for styling abilities when we added Nav
-		//wrapping in Router component to create multiple routes (v6 changes)
+				theme: theme === "light" ? "dark" : "light",
+			}));
+		},
+	};
+	//wrapped in additional div for styling abilities when we added Nav
+	//wrapping in Router component to create multiple routes (v6 changes)
 	render() {
 		return (
-	<Router>
-		<ThemeProvider value={this.state}>
-			<div className={this.state.theme}>
-				<div className="container">
-					<Nav />
-					<React.Suspense fallback={<Loading/>}>
-					<Switch>
-					<Route exact path='/' component={Popular}/>
-					<Route path='/battle' component={Battle}/>
-					<Route path='/battle/results' component={Results}/>
-					<Route render={() => <h1>404</h1>}/>
-					</Switch>
-					</React.Suspense>
-				
-				</div>
-			</div>
-		</ThemeProvider>
-	</Router>
-		)
+			<Router>
+				<ThemeProvider value={this.state}>
+					<div className={this.state.theme}>
+						<div className="container">
+							<Nav />
+							<React.Suspense fallback={<Loading />}>
+								<Switch>
+									<Route exact path="/" component={Popular} />
+									<Route path="/battle" component={Battle} />
+									<Route
+										path="/battle/results"
+										component={Results}
+									/>
+									<Route render={() => <h1>404</h1>} />
+								</Switch>
+							</React.Suspense>
+						</div>
+					</div>
+				</ThemeProvider>
+			</Router>
+		);
 	}
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<App />, document.getElementById("app"));

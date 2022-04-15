@@ -5,13 +5,11 @@ import * as React from "react";
 export default class Hover extends React.Component {
 	state = {
 		hovering: false,
-	}
+	};
 
-	mouseOver = () =>  this.setState({ hovering: true });
-	
-
+	mouseOver = () => this.setState({ hovering: true });
 	mouseOut = () => this.setState({ hovering: false });
-	
+
 	render() {
 		//hovering prop will be whatever the prop name currently is
 
